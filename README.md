@@ -33,7 +33,7 @@ EPICS host architecture
 
 
 ```yaml
-    epics_packages_state: present
+epics_packages_state: present
 ```
 
 If you have enabled any additional repositories, you may want an easy way to
@@ -43,7 +43,7 @@ version.
 
 
 ```yaml
-    epics_install_recommends: true
+epics_install_recommends: true
 ```
 
 (Debian/Ubuntu only) Whether to install recommended packages when
@@ -52,7 +52,7 @@ if you're installing a PPA that recommends certain packages you don't want.
 
 
 ```yaml
-    epics_packages_extra: []
+epics_packages_extra: []
 ```
 
 A list of extra EPICS packages to install without overriding the default list.
@@ -66,7 +66,6 @@ A list of extra EPICS packages to install without overriding the default list.
   tasks:
   - import_role:
       name: "{{ playbook_dir }}"
-
 ```
 
 ## Install Prerequisites
