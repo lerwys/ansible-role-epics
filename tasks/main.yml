@@ -1,0 +1,63 @@
+---
+- name: Resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      ignore_errors: true
+      paths:
+        - '{{ role_path }}/vars'
+
+- name: Define repository keys
+  set_fact:
+    epics_repository_keys: "{{ __epics_repository_keys | list }}"
+  when: epics_repository_keys is not defined
+
+- name: Define repositories
+  set_fact:
+    epics_repository_apt: "{{ __epics_repository_apt | list }}"
+  when: epics_repository_apt is not defined
+
+- name: Define EPICS packages
+  set_fact:
+    epics_packages: "{{ __epics_packages | list }}"
+  when: epics_packages is not defined
+
+- name: Define EPICS extra packages
+  set_fact:
+    epics_packages: "{{ epics_packages | list + epics_packages_extra | list }}"
+  when: epics_packages_extra is defined
+
+- name: Define PIP packages
+  set_fact:
+    epics_pip_packages: "{{ __epics_pip_packages | default([]) }}"
+  when: epics_pip_packages is not defined
+
+- name: Define PIP executable
+  set_fact:
+    pip_executable: "{{ __pip_executable | default(omit) }}"
+  when: pip_executable is not defined
+
+- name: Define PIP Python2 executable
+  set_fact:
+    pip2_executable: "{{ __pip2_executable | default(omit) }}"
+  when: pip2_executable is not defined
+
+# Setup/install tasks
+- name: Setup Debian environment
+  include_tasks: setup-Debian.yml
+  when:
+    - ansible_os_family == 'Debian'
+
+- name: Ensure EPICS base is installed from APT
+  include_tasks: install-epics-from-apt.yml
+  when:
+    - ansible_os_family == 'Debian'
+
+# Install EPICS from source when it's not Debian.
+- name: Ensure EPICS base is installed from source
+  include_tasks: install-epics-from-source.yml
+  when:
+    - ansible_os_family != 'Debian'

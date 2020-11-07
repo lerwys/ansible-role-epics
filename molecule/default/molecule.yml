@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      default_group:
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+driver:
+  name: docker
+platforms:
+  - name: ansible-role-epics-instance
+    image: "${MOLECULE_DISTRO:-debian:stretch}"
+    groups:
+      - default_group

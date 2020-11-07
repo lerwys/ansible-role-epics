@@ -1,0 +1,40 @@
+---
+language: python
+os: linux
+dist: xenial
+
+services:
+  - docker
+
+# Set CI_TIME: true to enable build-step profiling in Travis
+# Set CI_TRACE: true to enable shell script tracing in Travis
+env:
+  global:
+    - DNS_SERVER1: 1.1.1.1
+    - DNS_SERVER2: 8.8.8.8
+    - CI_TIME: false
+    - CI_TRACE: false
+  jobs:
+    - MOLECULE_DISTRO: debian:buster
+      BUILD_TYPE: default
+      ROLE: ansible-role-epics
+
+    - MOLECULE_DISTRO: debian:stretch
+      BUILD_TYPE: default
+      ROLE: ansible-role-epics
+
+before_install:
+  - sudo apt-get -qq update
+
+install:
+  - pip install ansible==2.9.* molecule==3.* \
+            molecule-docker testinfra \
+            yamllint ansible-lint flake8
+            docker
+
+# Hand off to generated script for each BUILD_TYPE
+script:
+  - ./ci_build.sh
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

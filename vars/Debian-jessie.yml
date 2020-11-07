@@ -1,0 +1,31 @@
+---
+# APT repositories
+__epics_repository_keys:
+  - name: Debian NSLS2 key
+    url: https://epicsdeb.bnl.gov/debian/repo-key.pub
+    keyring: /etc/apt/trusted.gpg.d/nsls2-epics-debian.gpg
+
+__epics_repository_apt:
+  - name: NSLS2 EPICS debian repository
+    baseurl: "deb https://epicsdeb.bnl.gov/debian jessie main contrib"
+    description: "NSLS-II Debian EPICS repository"
+    file: nsls2-epics-debian
+    state: present
+
+  - name: NSLS2 EPICS debian repository sources
+    baseurl: "deb-src https://epicsdeb.bnl.gov/debian jessie main contrib"
+    description: "NSLS-II Debian EPICS repository"
+    file: nsls2-epics-debian-src
+    state: present
+
+__epics_packages:
+  - "epics-dev{{ (epics_pkg_version_debian_epics_dev | length > 0) | ternary('=' + epics_pkg_version_debian_epics_dev, '') }}"
+  - "epics-pcas-dev{{ (epics_pkg_version_debian_epics_pcas_dev | length > 0) | ternary('=' + epics_pkg_version_debian_epics_pcas_dev, '') }}"
+
+__epics_pip_packages:
+  - "setuptools{{ (epics_pkg_version_debian_setuptools | length > 0) | ternary('==' + epics_pkg_version_debian_setuptools, '') }}"
+  - "pyepics{{ (epics_pkg_version_debian_pyepics | length > 0) | ternary('==' + epics_pkg_version_debian_pyepics, '') }}"
+
+__pip_executable: pip
+
+__pip2_executable: pip
