@@ -29,7 +29,7 @@ before_install:
 install:
   - pip3 install ansible molecule \
             molecule-docker testinfra \
-            yamllint ansible-lint flake8
+            yamllint ansible-lint flake8 \
             docker
 
 # Hand off to generated script for each BUILD_TYPE
