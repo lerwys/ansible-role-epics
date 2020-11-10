@@ -1,7 +1,7 @@
 Ansible Role EPICS
 =======================
 
-[![Build Status](https://travis-ci.org/lerwys/ansible-role-epics.svg)](https://travis-ci.org/lerwys/ansible-role-epics)
+[![CI](https://github.com/lerwys/ansible-role-epics/workflows/CI/badge.svg)](https://github.com/lerwys/ansible-role-epics/actions?query=workflow%3ACI)
 ![Latest tag](https://img.shields.io/github/tag/lerwys/ansible-role-epics.svg?style=flat)
 [![Latest release](https://img.shields.io/github/release/lerwys/ansible-role-epics.svg?style=flat)](https://github.com/lerwys/ansible-role-epics/releases)
 [![BSD License](https://img.shields.io/github/license/lerwys/ansible-role-epics.svg?style=flat)](LICENSE)
