@@ -90,7 +90,7 @@ Tests are performed using Molecule. To run them with python virtualenv, issue:
         virtualenv env --python python3 && \
         source env/bin/activate && \
         cd ansible-role-epics && \
-        pip install ansible==2.9.* molecule==3.* \
+        pip install ansible molecule \
             molecule-docker testinfra \
             yamllint ansible-lint flake8 \
             docker && \
