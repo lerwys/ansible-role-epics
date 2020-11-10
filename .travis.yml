@@ -27,7 +27,7 @@ before_install:
   - sudo apt-get -qq update
 
 install:
-  - pip install ansible molecule \
+  - pip3 install ansible molecule \
             molecule-docker testinfra \
             yamllint ansible-lint flake8
             docker
