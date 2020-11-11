@@ -16,7 +16,7 @@ on:
 
 defaults:
   run:
-    working-directory: 'lerwys.ansible_role_epics'
+    working-directory: 'lerwys.epics'
 
 jobs:
 
@@ -27,7 +27,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v2
         with:
-          path: 'lerwys.ansible_role_epics'
+          path: 'lerwys.epics'
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
