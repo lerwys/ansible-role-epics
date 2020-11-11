@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: epics
   author: Lucas Russo
   description: Ansible role to install EPICS base and extra packages
   company: Lucas Russo
