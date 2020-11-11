@@ -32,6 +32,9 @@ Vagrant.configure("2") do |config|
           v.name = name
           v.customize ["modifyvm", :id, "--memory", 256]
       end
+      machine.vm.provider :libvirt do |v|
+        v.qemu_use_session = false
+      end
     end
   end
 end
