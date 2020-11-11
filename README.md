@@ -43,6 +43,13 @@ version.
 
 
 ```yaml
+epics_pip_packages_state: present
+```
+
+EPICS PIP packages state
+
+
+```yaml
 epics_install_recommends: true
 ```
 
@@ -56,6 +63,25 @@ epics_packages_extra: []
 ```
 
 A list of extra EPICS packages to install without overriding the default list.
+
+
+```yaml
+epics_config_files_state: present
+```
+
+Install EPICS configuration files or not. Options are `present` or `absent`
+
+
+```yaml
+epics_config_files:
+  - name: EPICS environment variables
+    state: present
+    filename: epics.sh
+    pathname: "/etc/profile.d"
+```
+
+EPICS configuration files. By default some environment variables are
+installed with this `epics.sh` file.
 
 ## Example Playbook
 
