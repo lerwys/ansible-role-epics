@@ -2,3 +2,5 @@
 - name: Install EPICS base source
   fail:
     msg: "Installing EPICS from source is not current available. Use a supported distribution"
+  failed_when: false
+  changed_when: false

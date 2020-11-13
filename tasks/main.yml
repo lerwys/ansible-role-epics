@@ -12,12 +12,12 @@
 
 - name: Define repository keys
   set_fact:
-    epics_repository_keys: "{{ __epics_repository_keys | list }}"
+    epics_repository_keys: "{{ __epics_repository_keys | default ([]) | list }}"
   when: epics_repository_keys is not defined
 
 - name: Define repositories
   set_fact:
-    epics_repository_apt: "{{ __epics_repository_apt | list }}"
+    epics_repository_apt: "{{ __epics_repository_apt | default ([]) | list }}"
   when: epics_repository_apt is not defined
 
 - name: Define EPICS packages
@@ -27,7 +27,8 @@
 
 - name: Define EPICS extra packages
   set_fact:
-    epics_packages: "{{ epics_packages | list + epics_packages_extra | list }}"
+    epics_packages: "{{ epics_packages | list +
+      epics_packages_extra | default([]) | list }}"
   when: epics_packages_extra is defined
 
 - name: Define PIP packages
