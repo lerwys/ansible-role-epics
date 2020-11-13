@@ -44,6 +44,8 @@ jobs:
         distro:
           - debian:buster
           - debian:stretch
+          - centos:7
+          - centos:8
 
     steps:
       - name: Check out the codebase
