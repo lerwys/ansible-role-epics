@@ -6,6 +6,14 @@ FROM {{ item.registry.url }}/{{ item.image }}
 FROM {{ item.image }}
 {% endif %}
 
+{% if item.env is defined %}
+{% for var, value in item.env.items() %}
+{% if value %}
+ENV {{ var }} {{ value }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
 RUN \
 {% if item.dns_servers is defined and item.dns_servers %}
     {% for dns in item.dns_servers %}
