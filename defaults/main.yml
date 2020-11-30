@@ -1,6 +1,7 @@
 ---
 # Package versions for Debian. Leave empty for the latest
 epics_pkg_version_debian_python_pip: ""
+epics_pkg_version_debian_python3_pip: ""
 epics_pkg_version_debian_epics_dev: ""
 epics_pkg_version_debian_epics_pcas_dev: ""
 epics_pkg_version_debian_setuptools: ""
