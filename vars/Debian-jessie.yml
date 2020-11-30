@@ -21,6 +21,8 @@ __epics_repository_apt:
 __epics_packages:
   - "epics-dev{{ (epics_pkg_version_debian_epics_dev | length > 0) | ternary('=' + epics_pkg_version_debian_epics_dev, '') }}"
   - "epics-pcas-dev{{ (epics_pkg_version_debian_epics_pcas_dev | length > 0) | ternary('=' + epics_pkg_version_debian_epics_pcas_dev, '') }}"
+  - "python-pip{{ (epics_pkg_version_debian_python_pip | length > 0) | ternary('=' + epics_pkg_version_debian_python_pip, '') }}"
+  - "python3-pip{{ (epics_pkg_version_debian_python3_pip | length > 0) | ternary('=' + epics_pkg_version_debian_python3_pip, '') }}"
 
 __epics_pip_packages:
   - "setuptools{{ (epics_pkg_version_debian_setuptools | length > 0) | ternary('==' + epics_pkg_version_debian_setuptools, '') }}"
