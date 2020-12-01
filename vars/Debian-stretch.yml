@@ -30,6 +30,6 @@ __epics_pip_packages:
   - "setuptools{{ (epics_pkg_version_debian_setuptools | length > 0) | ternary('==' + epics_pkg_version_debian_setuptools, '') }}"
   - "pyepics{{ (epics_pkg_version_debian_pyepics | length > 0) | ternary('==' + epics_pkg_version_debian_pyepics, '') }}"
 
-__pip_executable: pip
+__pip_executable: pip3
 
 __pip2_executable: pip2
